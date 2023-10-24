@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<configuration>
+  <appSettings>
+    <add key="publishPath" value="C:\Downloads\"/>
+  </appSettings>
+	<connectionStrings/>
+	<system.web>
+		<compilation debug="true">
+		</compilation>
+		<authentication mode="Windows"/>
+	</system.web>
+</configuration>
