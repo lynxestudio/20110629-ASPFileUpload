@@ -7,12 +7,12 @@ ASP .NET tiene dos formas de hacer esta funcionalidad, una mediante un control H
 A continuación mostramos el listado de un programa en ASP.NET como ejemplo de la implementación de publicación de documentos utilizando el control HtmlInputFile.
 </p>
 <div>Listado 1.0 ASP.NET upload con un control HtmlInputFile</div>
-<img src=""/>
+<img src="201114InputFileMarkup.png"/>
 <p>
 Como muestra de la implementación ASP.NET con el control FileUpload, presentamos el siguiente listado.
 </p>
 <div>Listado 2.0 ASP.NET Upload con un control FileUpload</div>
-<img src=""/>
+<img src="201114MarkupCode.png"/>
 <p>
 Para ambos casos el archivo de configuración web.config es el mismo, lo que cambia en ambos casos es el valor de la llave publishPath dentro de las etiquetas
 <pre>
@@ -23,11 +23,11 @@ Para ambos casos el archivo de configuración web.config es el mismo, lo que cam
 <p>
 Por lo que el valor se establece en /home/martin/public_html/Downloads como se muestra en el web.config a continuación:
 </p>
-<img src=""/>
+<img src="201114Config1.png"/>
 <p>
 En el caso del listado 2.0 lo ejecutaremos en IIS 7.0 y Windows. Por lo que el valor se establece como se muestra en el web.config a continuación:
 </p>
-<img src=""/>
+<img src="201114Config2.png"/>
 <p>
 Para asignar el valor de la variable publishPath en el listado 1.0 con la siguiente línea:
 </p>
@@ -60,36 +60,44 @@ Ponemos permisos de escritura para el grupo con el siguiente comando:
 <p>
 Estos comandos se muestran a continuación en la siguiente imagen.
 </p>
-<img src=""/>
+<img src="fig6.png"/>
 <p>
 Ahora configuramos la Web Application dentro del archivo httpd.conf del servidor Apache como se muestra en la siguiente imagen:
 </p>
-<img src=""/>
+<img src="fig9.png"/>
 <p>
 Para consultar como crear una aplicación Web en Apache revisar el siguiente documento: ASP.NET con Mono
 </p>
 <p align="justify">
 Igualmente antes de ejecutar la página en Windows debemos de habilitar con los permisos necesarios el directorio del servidor donde vamos a guardar los documentos, en este ejemplo la ruta configurada como directorio de publicación es C:\inetpub\wwwroot\dowloads, por lo que debemos seguir los siguientes pasos:
 </p>
-
-Hacer click derecho sobre el directorio, en la ventana Properties seleccionar al usuario IIS_IUSRS (el cuál es el usuario anónimo de IIS), presionar el botón “Edit” para abrir la ventana Permissions.
-
-
-En la ventana de Permissions en la lista inferior Permissions for IIS_IUSRS seleccionar la casilla con el permiso Write
-
-
+<ol>
+    <li>
+    Hacer click derecho sobre el directorio, en la ventana Properties seleccionar al usuario IIS_IUSRS (el cuál es el usuario anónimo de IIS), presionar el botón “Edit” para abrir la ventana Permissions.
+    <div><img src="fig3.png"></div>
+    </li>
+    <li>
+    En la ventana de Permissions en la lista inferior Permissions for IIS_IUSRS seleccionar la casilla con el permiso Write
+    <div><img src="fig4.png"></div>
+    </li>
+</ol>
 Creamos la Web Application de forma que se muestre en IIS 7.0 como en la siguiente imagen:
-
+<div><img src="fig10.png"></div><br />
 Al ejecutar la página ASP.NET desde FireFox en Linux se mostrará como en las siguientes imágenes:
-
+<div><img src="fig7.png"></div><br />
+<div><img src="fig8.png"></div><br />
 Al ejecutar la página ASP.NET desde Internet Explorer en Windows se verá como en las siguientes imágenes:
-<p>
-Un error frecuente tanto para la implementación con HtmlInputFile y FileUpload, es tratar de subir un archivo que tenga un tamaño mayor al máximo permitido por la petición al servidor Web (Request)
+<div><img src="fig1.png"></div><br />
+<div><img src="fig2.png"></div><br />
+<p align="justify">
+Un error frecuente tanto para la implementación con HtmlInputFile y FileUpload, es tratar de subir un archivo que tenga un tamaño mayor al máximo permitido por la petición al servidor Web <i>(Request)</i>
+<div><img src="fig5.png"></div>
 </p>
 <p>
 Para solucionar este error solo hay que agregar la siguiente línea al archivo de configuración, donde definimos el tamaño máximo en Kb del archivo que necesitamos publicar. Por ejemplo en el siguiente web.config se definió un tamaño máximo aproximado a 5 mbs (5120 kb).
 </p>
-<img src=""/>
+<img src="201114Config3.png"/>
 <p>
-Para más información sobre este error consultar este enlace: HttpException Maximum Request Length.
+Para más información sobre este error consultar este enlace: 
+<a href="http://www.vishwamohan.com/post/2006/12/30/Error-SystemWebHttpException-Maximum-request-length-exceeded.aspx">HttpException Maximum Request Length.</a>
 </p>
